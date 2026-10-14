@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Type-check + build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      # Build with the same env shape Railway uses, so missing env vars
+      # surface here instead of at deploy time. We seed safe placeholders
+      # for any var the build touches at module load — secrets stay out
+      # of CI, real values live only on Railway.
+      - name: Next.js build (matches Railway Dockerfile)
+        env:
+          NODE_ENV: production
+          # Magic-link + session — placeholders, never the real secret.
+          LIBRARY_PASSWORD: ci-placeholder
+          LIBRARY_SESSION_SECRET: ci-placeholder-not-a-real-secret
+          # GHL — placeholders. Build never calls the API, only reads names.
+          GHL_API_KEY: ci-placeholder
+          GHL_LOCATION_ID: ci-placeholder
+          GHL_CALENDAR_URL: https://example.com/ci-placeholder
+          # Resend, Anthropic — same.
+          RESEND_API_KEY: re_ci_placeholder
+          ANTHROPIC_API_KEY: sk-ant-ci-placeholder
+          RIVERSIDE_STUDIO_URL: https://riverside.com/studio/ci-placeholder
+        run: npm run build

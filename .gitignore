@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env*.local
+.env.*-pull
+.env.railway-clean
+*.log
+.DS_Store
+.vercel
+next-env.d.ts
+dist/
+tsconfig.tsbuildinfo

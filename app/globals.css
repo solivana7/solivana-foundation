@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --solivana-bark: #331D01;
+  --solivana-amber: #EC9247;
+  --solivana-taupe: #786455;
+  --solivana-sand: #B49F90;
+  --solivana-cream: #F0EDED;
+  --solivana-warm: #F6F1EC;
+  --solivana-ink: #1F1208;
+}
+
+html, body {
+  background: #F6F1EC;
+  color: var(--solivana-ink);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 400;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 1200px 600px at 80% -10%, rgba(236, 146, 71, 0.06), transparent 60%),
+    radial-gradient(ellipse 800px 500px at 0% 100%, rgba(120, 100, 85, 0.05), transparent 60%),
+    #F6F1EC;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Jost', system-ui, sans-serif;
+  letter-spacing: -0.018em;
+  color: var(--solivana-ink);
+}
+
+.serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.eyebrow {
+  font-family: 'Poppins', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--solivana-taupe);
+}
+
+::selection {
+  background: rgba(236, 146, 71, 0.25);
+  color: var(--solivana-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--solivana-amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(180, 159, 144, 0.5), transparent);
+}
+
+.card-soft {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 1px 2px rgba(31, 18, 8, 0.04),
+    0 12px 32px -16px rgba(31, 18, 8, 0.10);
+  border: 1px solid rgba(180, 159, 144, 0.25);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-soft:hover {
+  box-shadow:
+    0 2px 4px rgba(31, 18, 8, 0.05),
+    0 24px 48px -20px rgba(31, 18, 8, 0.16);
+  transform: translateY(-2px);
+}
+
+.card-flat {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(180, 159, 144, 0.35);
+}
+
+/* .card-feature — extends card-soft with a subtle orange bottom accent.
+   Used on FEATURE cards only (Member Perks, clickable program components,
+   anywhere the card is the primary call-to-action on a page). NOT on
+   generic content cards — applying orange to every card would violate the
+   "orange as accent only, never dominant" rule. The accent is a 2px bottom
+   border that only appears on hover, plus a slightly lifted resting state. */
+.card-feature {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(180, 159, 144, 0.25);
+  border-bottom: 2px solid rgba(236, 146, 71, 0.35);
+  box-shadow:
+    0 1px 2px rgba(31, 18, 8, 0.04),
+    0 12px 32px -16px rgba(31, 18, 8, 0.10);
+  transition: border-bottom-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-feature:hover {
+  border-bottom-color: rgba(236, 146, 71, 0.85);
+  box-shadow:
+    0 2px 4px rgba(31, 18, 8, 0.05),
+    0 24px 48px -20px rgba(31, 18, 8, 0.16);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--solivana-ink);
+  color: #F6F1EC;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 1.1rem 2.4rem;
+  border-radius: 999px;
+  display: inline-block;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  box-shadow: 0 1px 2px rgba(31, 18, 8, 0.10), 0 16px 28px -16px rgba(31, 18, 8, 0.30);
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--solivana-amber);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(236, 146, 71, 0.20), 0 18px 32px -14px rgba(236, 146, 71, 0.45);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--solivana-ink);
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 1.05rem 2.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 18, 8, 0.25);
+  display: inline-block;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  border-color: var(--solivana-ink);
+  background: rgba(31, 18, 8, 0.03);
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Display heading variant */
+.display-h1 {
+  font-family: 'Jost', system-ui, sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+.display-h1 em {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Print styles — let members hit Cmd+P (or the Print/Save-as-PDF button)
+   to get a clean, paper-ready version of any reference page. */
+@media print {
+  :root {
+    color-scheme: light;
+  }
+  html, body {
+    background: #ffffff !important;
+    color: #1F1208 !important;
+  }
+  body {
+    background: #ffffff !important;
+    background-attachment: initial !important;
+  }
+  /* Hide chrome that doesn't belong on paper */
+  header,
+  footer,
+  nav,
+  [role='navigation'],
+  .print\:hidden {
+    display: none !important;
+  }
+  /* Backgrounds and shadows fall away on paper */
+  .card-soft,
+  .card-flat {
+    box-shadow: none !important;
+    border: 1px solid rgba(180, 159, 144, 0.6) !important;
+    page-break-inside: avoid;
+    background: #ffffff !important;
+  }
+  section {
+    break-inside: avoid-page;
+    background: transparent !important;
+  }
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  /* Brand-friendly print headings — keep typography; drop weights */
+  h1, h2, h3 {
+    color: #331D01 !important;
+    page-break-after: avoid;
+  }
+  /* Don't break inside checklist items */
+  li {
+    page-break-inside: avoid;
+  }
+}
+
+/* Show items normally on screen even when marked print:block hidden */
+.print\:block.hidden {
+  display: none;
+}
+@media print {
+  .print\:block.hidden {
+    display: block !important;
+  }
+}
+
+/* Honor user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
